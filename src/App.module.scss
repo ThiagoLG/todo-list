@@ -1,0 +1,67 @@
+@import 'reusables/variables.scss';
+
+header {
+  background-color: $gray-700;
+  height: 12.5rem;
+  display: flex;
+  justify-content: center;
+
+  .logo {
+    margin-top: 4.5rem;
+
+    img {
+      width: 7.875rem;
+      height: 3rem;
+    }
+  }
+}
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+
+  form {
+    .formGroup {
+      margin-top: -1.688rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+
+      input {
+        width: 39.875rem;
+        height: 3.375rem;
+        border-radius: 8px;
+        background-color: $gray-500;
+        padding: 1rem;
+        font-size: 1rem;
+        line-height: 1.4rem;
+        color: $gray-300;
+        border: 0;
+        font-weight: 400;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        width: 5.625rem;
+        height: 3.25rem;
+
+        border-radius: 8px;
+        background-color: $blue-dark;
+        color: white;
+        border: 0;
+
+        font-size: 0.875rem;
+
+      }
+    }
+  }
+}

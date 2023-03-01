@@ -14,5 +14,6 @@
   :root {
     color: $general-text-color;
     background-color: $backgroud-gray;
+    -webkit-font-smoothing: atialiased;
   }
 }
