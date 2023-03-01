@@ -1,0 +1,18 @@
+@import 'reusables/variables.scss';
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: $general-text-color;
+    background-color: $backgroud-gray;
+  }
+}
