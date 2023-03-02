@@ -12,6 +12,7 @@ function App() {
       </header>
 
       <main>
+
         <form>
           <div className={styles.formGroup}>
             <input type="text" placeholder='Add a new task' />
@@ -21,6 +22,27 @@ function App() {
             </button>
           </div>
         </form>
+
+        <section className={styles.taskContainer}>
+
+          <div className={styles.taskHeader}>
+
+            <div className={styles.infoLabel}>
+              <span className={styles.label}>Created Tasks</span>
+              <span className={styles.counter}>0</span>
+            </div>
+
+            <div className={styles.infoLabel}>
+              <span className={styles.label}>Finished Tasks</span>
+              <span className={styles.counter}>0</span>
+            </div>
+
+          </div>
+
+          <hr />
+
+        </section>
+
       </main>
 
 
