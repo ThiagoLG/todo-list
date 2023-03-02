@@ -1,7 +1,11 @@
 import styles from './App.module.scss'
 import { PlusCircle } from 'phosphor-react'
+import { useState } from 'react'
 
 function App() {
+
+  const [tasksList, setTasksList] = useState([]);
+
   return (
     <div className="App">
 
@@ -39,7 +43,16 @@ function App() {
 
           </div>
 
-          <hr />
+          {!tasksList.length ?
+            <>
+              <hr />
+              <div className={styles.emptyTasksContainer}>
+                <img src="Clipboard.svg" alt="empty tasks list icon" />
+                <p>You don't have created tasks yet.</p>
+                <p>Create your tasks and organize your to do list.</p>
+              </div>
+            </>
+            : null}
 
         </section>
 

@@ -90,8 +90,8 @@ main {
           margin-left: 0.5rem;
         }
 
-        &:nth-child(2){
-          .label{
+        &:nth-child(2) {
+          .label {
             color: $purple;
           }
         }
@@ -99,9 +99,31 @@ main {
       }
     }
 
-    hr{
+    hr {
       border-color: $gray-400;
       margin-top: 1.5rem;
+    }
+
+    .emptyTasksContainer {
+      padding: 4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $gray-300;
+        font-size: 1rem;
+        line-height: 1.375rem;
+
+        &:nth-child(1) {
+          font-weight: 700;
+        }
+      }
     }
 
   }
