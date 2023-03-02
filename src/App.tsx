@@ -1,10 +1,29 @@
 import styles from './App.module.scss'
 import { PlusCircle } from 'phosphor-react'
 import { useState } from 'react'
+import { Task } from './components/Task/TaskItem';
+import { ITaskItem } from './models/ITaskItem';
 
 function App() {
 
-  const [tasksList, setTasksList] = useState([]);
+  const [tasksList, setTasksList] = useState<ITaskItem[]>([
+    {
+      id: '123',
+      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+      createdAt: new Date()
+    },
+    {
+      id: '123',
+      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+      createdAt: new Date()
+    },
+    {
+      id: '123',
+      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+      createdAt: new Date()
+    }
+
+  ]);
 
   return (
     <div className="App">
@@ -52,7 +71,11 @@ function App() {
                 <p>Create your tasks and organize your to do list.</p>
               </div>
             </>
-            : null}
+            :
+            tasksList.map((task) => {
+              return (<Task taskInfos={task} />)
+            })
+          }
 
         </section>
 
