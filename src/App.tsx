@@ -1,11 +1,11 @@
 import styles from './App.module.scss'
 import { PlusCircle } from 'phosphor-react'
-import { useState } from 'react'
+import { InvalidEvent, useState } from 'react'
 import { Task } from './components/Task/TaskItem';
 import { ITaskItem } from './models/ITaskItem';
 
 function App() {
-
+  const [newTask, setNewTask] = useState<string>('');
   const [tasksList, setTasksList] = useState<ITaskItem[]>([
     {
       id: '123',
@@ -13,17 +13,47 @@ function App() {
       createdAt: new Date()
     },
     {
-      id: '123',
+      id: '1233',
       description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-      createdAt: new Date()
+      createdAt: new Date(),
+      finishedAt: new Date()
     },
     {
-      id: '123',
+      id: '1234',
       description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
       createdAt: new Date()
     }
 
   ]);
+
+
+  function handleNewTaskInvalid(event: any) {
+    (event.target as HTMLInputElement).setCustomValidity('Please, insert a description to your new task.');
+  }
+
+  function handleNewTaskChange(event: any) {
+    event.target.setCustomValidity('');
+    setNewTask(event.target.value);
+  }
+
+  function handleTaskSubmit(event: any) {
+    event.preventDefault();
+
+    setTasksList([
+      ...tasksList,
+      {
+        id: `${Math.floor(Math.random() * 9999999)}`,
+        createdAt: new Date(),
+        description: newTask
+      }]);
+
+    setNewTask('');
+  }
+
+  function handleTaskDelete(taskId: string) {
+    setTasksList(tasksList.filter(task => task.id !== taskId));
+  }
+
 
   return (
     <div className="App">
@@ -36,9 +66,16 @@ function App() {
 
       <main>
 
-        <form>
+        <form onSubmit={handleTaskSubmit}>
           <div className={styles.formGroup}>
-            <input type="text" placeholder='Add a new task' />
+            <input
+              type="text"
+              placeholder='Add a new task'
+              required
+              onInvalid={handleNewTaskInvalid}
+              onChange={handleNewTaskChange}
+              value={newTask}
+            />
             <button type='button'>
               Create
               <PlusCircle size={16} />
@@ -52,12 +89,14 @@ function App() {
 
             <div className={styles.infoLabel}>
               <span className={styles.label}>Created Tasks</span>
-              <span className={styles.counter}>0</span>
+              <span className={styles.counter}>{tasksList.length}</span>
             </div>
 
             <div className={styles.infoLabel}>
               <span className={styles.label}>Finished Tasks</span>
-              <span className={styles.counter}>0</span>
+              <span className={styles.counter}>
+                {tasksList.filter(t => !!t.finishedAt).length} from {tasksList.length}
+              </span>
             </div>
 
           </div>
@@ -73,7 +112,7 @@ function App() {
             </>
             :
             tasksList.map((task) => {
-              return (<Task taskInfos={task} />)
+              return (<Task key={task.id} taskInfos={task} onDeleteTask={handleTaskDelete} />)
             })
           }
 
