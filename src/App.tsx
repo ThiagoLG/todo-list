@@ -54,6 +54,16 @@ function App() {
     setTasksList(tasksList.filter(task => task.id !== taskId));
   }
 
+  function handleTaskFinish(taskId?: string) {
+    setTasksList(
+      tasksList.map(task => {
+        if (task.id === taskId)
+          task.finishedAt = !!task.finishedAt ? undefined : new Date();
+
+        return task;
+      })
+    );
+  }
 
   return (
     <div className="App">
@@ -112,7 +122,13 @@ function App() {
             </>
             :
             tasksList.map((task) => {
-              return (<Task key={task.id} taskInfos={task} onDeleteTask={handleTaskDelete} />)
+              return (
+                <Task
+                  key={task.id}
+                  taskInfos={task}
+                  onDeleteTask={handleTaskDelete}
+                  onFinishTask={handleTaskFinish}
+                />)
             })
           }
 
