@@ -86,7 +86,7 @@ function App() {
               onChange={handleNewTaskChange}
               value={newTask}
             />
-            <button type='button'>
+            <button type='submit'>
               Create
               <PlusCircle size={16} />
             </button>
