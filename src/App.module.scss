@@ -69,6 +69,7 @@ main {
   .taskContainer {
     display: grid;
     gap: 0.75rem;
+
     .taskHeader {
       display: flex;
       justify-content: space-between;
@@ -128,5 +129,40 @@ main {
       }
     }
 
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+
+    form {
+      .formGroup {
+        flex-direction: column;
+
+        input,
+        button {
+          width: 100%;
+        }
+
+        button {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  main {
+    .taskContainer {
+      .taskHeader {
+        flex-direction: column;
+
+        .infoLabel {
+          padding: 0.25rem;
+        }
+      }
+    }
   }
 }
