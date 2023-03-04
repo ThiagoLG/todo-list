@@ -6,6 +6,9 @@ header {
   display: flex;
   justify-content: center;
 
+  position: sticky;
+  top: -4.125rem;
+
   .logo {
     margin-top: 4.5rem;
 
@@ -21,6 +24,10 @@ main {
   margin: 0 auto;
 
   form {
+    position: sticky;
+    top: 4rem;
+    z-index: 20;
+
     .formGroup {
       margin-top: -1.688rem;
       display: flex;
@@ -72,8 +79,18 @@ main {
 
     .taskHeader {
       display: flex;
+      align-items: flex-end;
       justify-content: space-between;
-      margin-top: 4rem;
+
+      position: sticky;
+      top: 5rem;
+      z-index: 10;
+
+      height: 5.5rem;
+      background: $backgroud-gray;
+      padding: 0.625rem 0;
+      z-index: 10;
+      border-bottom: 1px solid $gray-200;
 
       .infoLabel {
         font-weight: 700;
@@ -137,6 +154,8 @@ main {
     padding: 0 1.25rem 1.25rem 1.25rem;
 
     form {
+      top: 4.5rem;
+
       .formGroup {
         flex-direction: column;
 
@@ -150,6 +169,12 @@ main {
         }
       }
     }
+
+    .taskContainer{
+      .taskHeader{
+        top: 8.75rem;
+      }
+    }
   }
 }
 
@@ -158,6 +183,7 @@ main {
     .taskContainer {
       .taskHeader {
         flex-direction: column;
+        top: 11.5rem;
 
         .infoLabel {
           padding: 0.25rem;
