@@ -1,30 +1,12 @@
 import styles from './App.module.scss'
 import { PlusCircle } from 'phosphor-react'
-import { InvalidEvent, useState } from 'react'
+import { InvalidEvent, useLayoutEffect, useState } from 'react'
 import { Task } from './components/Task/TaskItem';
 import { ITaskItem } from './models/ITaskItem';
 
 function App() {
   const [newTask, setNewTask] = useState<string>('');
-  const [tasksList, setTasksList] = useState<ITaskItem[]>([
-    {
-      id: '123',
-      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-      createdAt: new Date()
-    },
-    {
-      id: '1233',
-      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-      createdAt: new Date(),
-      finishedAt: new Date()
-    },
-    {
-      id: '1234',
-      description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-      createdAt: new Date()
-    }
-
-  ]);
+  const [tasksList, setTasksList] = useState<ITaskItem[]>(getLocalStorageItems());
 
 
   function handleNewTaskInvalid(event: any) {
@@ -64,6 +46,19 @@ function App() {
       })
     );
   }
+
+  function updateLocalStorage() {
+    localStorage.setItem('todo_list_tasks', JSON.stringify(tasksList));
+  }
+
+  function getLocalStorageItems() {
+    return JSON.parse(localStorage.getItem('todo_list_tasks') as string) || [];
+  }
+
+  useLayoutEffect(() => {
+    updateLocalStorage();
+    console.log('localStorageUpdated');
+  }, [tasksList])
 
   return (
     <div className="App">
