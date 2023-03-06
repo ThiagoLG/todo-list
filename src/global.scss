@@ -2,6 +2,8 @@
 
 :root {
   color-scheme: light dark;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: atialiased;
 }
 
 * {
@@ -10,11 +12,18 @@
   box-sizing: border-box;
 }
 
+
+
 @media (prefers-color-scheme: light) {
   :root {
-    font-family: 'Inter', sans-serif;
     color: $general-text-color;
     background-color: $backgroud-gray;
-    -webkit-font-smoothing: atialiased;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: $general-text-color;
+    background-color: $backgroud-gray;
   }
 }
